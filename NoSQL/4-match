@@ -1,3 +1,2 @@
-// comment
-
-db.school.find({  "name": "Holberton school" })
+// lists all documents
+db.school.find({'name': 'Holberton school'})

@@ -1,3 +1,2 @@
-// comment
-
-show collections
+// lists all documents in the collection school
+db.school.find()

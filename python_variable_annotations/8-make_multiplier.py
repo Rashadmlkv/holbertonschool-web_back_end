@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
-"""Complex types - functions"""
-
+"""a type-annotated function make_multiplier"""
 
 from typing import Callable
 
 
 def make_multiplier(multiplier: float) -> Callable[[float], float]:
-    """function that returns new function"""
-    def multiply_with_n(number: float) -> float:
-        """function that multiplies number with multiplier"""
-        return number * multiplier
-    return multiply_with_n
+    """multiplies a float"""
+
+    def multiplier_func(f: float):
+        return f * multiplier
+
+    return multiplier_func
