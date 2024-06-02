@@ -1,7 +1,5 @@
 #!/usr/bin/env python3
-"""
-Deletion-resilient hypermedia pagination
-"""
+"""This module contains Server class"""
 
 import csv
 import math
@@ -40,16 +38,20 @@ class Server:
         return self.__indexed_dataset
 
     def get_hyper_index(self, index: int = None, page_size: int = 10) -> Dict:
-        """get hyper index"""
-        dataset = self.dataset()
-        total_items = len(dataset)
-        start_index = index if index is not None else 0
-        end_index = min(start_index + page_size, total_items)
-        assert 0 <= start_index < total_items, "Index out of range"
-        data = dataset[start_index:end_index]
+        """The goal here is that if between two queries, certain rows are
+        removed from the dataset, the user does not miss items from dataset
+        when changing page"""
+
+        assert 0 <= index < len(self.dataset())
+        start = index if index is not None else 0
+        next_index = start + page_size
+        data = self.dataset()[start: next_index]
+        if not self.__indexed_dataset.get(index):
+            next_index += 1
+            data = list(self.indexed_dataset().values())[start: next_index - 1]
         return {
-            "index": start_index,
-            "next_index": end_index,
+            "index": start,
+            "next_index": next_index,
             "page_size": page_size,
-            "data": data
-        }
+            "data": data,
+            }

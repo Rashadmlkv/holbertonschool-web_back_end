@@ -1,2 +1,2 @@
-// count the number of documents in the collection 
-db.school.count()
+// script that displays the number of documents in the collection school
+db.school.find({}).count()

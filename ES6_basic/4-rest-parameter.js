@@ -1,4 +1,4 @@
 /* eslint-disable */
-export default function returnHowManyArguments(...parameters) {
-    return (parameters.length)
+export default function returnHowManyArguments(...params) {
+    return (params.length)
 }

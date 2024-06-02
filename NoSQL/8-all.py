@@ -1,11 +1,9 @@
 #!/usr/bin/env python3
-"""Task 8"""
-import pymongo
+"""This module contains a Python function that
+lists all documents in a collection"""
 
 
 def list_all(mongo_collection):
-    """Lists all the docs in a collection"""
-    docs = mongo_collection.find()
-    if docs.count() == 0:
-        return []
-    return docs
+    """lists all documents in a collection"""
+    
+    return mongo_collection.find()
