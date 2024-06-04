@@ -1,47 +1,60 @@
+/* eslint-disable */
 export default class HolbertonCourse {
-  constructor(name, length, students) {
-    this.name = name;
-    this.length = length;
-    this.students = students;
-  }
-
-  get name() {
-    return this._name;
-  }
-
-  set name(name) {
-    if (typeof name !== 'string') throw new TypeError('Name must be a string');
-
-    this._name = name;
-  }
-
-  get length() {
-    return this._length;
-  }
-
-  set length(length) {
-    if (typeof length !== 'number') {
-      throw new TypeError('Length must be a number');
+    constructor(name, length, students) {
+      if (typeof name !== 'string') {
+        throw new TypeError('Name must be a string');
+      }
+      if (typeof length !== 'number') {
+        throw new TypeError('Length must be a number');
+      }
+      if (!Array.isArray(students)) {
+        throw new TypeError('Students must be an array');
+      }
+      students.forEach((student) => {
+        if (typeof student !== 'string') {
+          throw new TypeError('Students must be an array of strings');
+        }
+      });
+      this._name = name;
+      this._length = length;
+      this._students = students;
     }
-
-    this._length = length;
-  }
-
-  get students() {
-    return this._students;
-  }
-
-  set students(students = []) {
-    let allElementsString = false;
-
-    if (Array.isArray(students)) {
-      allElementsString = students.every((el) => typeof el === 'string');
+  
+    get name() {
+      return this._name;
     }
-
-    if (!allElementsString) {
-      throw new TypeError('Students must be a list of strings');
+  
+    get length() {
+      return this._length;
     }
-
-    this._students = students;
-  }
+  
+    get students() {
+      return this._students;
+    }
+  
+    set name(newName) {
+      if (typeof newName !== 'string') {
+        throw new TypeError('Name must be a string');
+      }
+      this._name = newName;
+    }
+  
+    set length(newLength) {
+      if (typeof newLength !== 'number') {
+        throw new TypeError('Length must be a number');
+      }
+      this._length = newLength;
+    }
+  
+    set students(newStudents) {
+      if (!Array.isArray(newStudents)) {
+        throw new TypeError('Students must be an array');
+      }
+      this.students.forEach((student) => {
+        if (typeof student !== 'string') {
+          throw new TypeError('Students must be an array of strings');
+        }
+      });
+      this._students = newStudents;
+    }
 }

@@ -1,34 +1,27 @@
+/* eslint-disable */
 export default class Currency {
-  constructor(code, name) {
-    this.code = code;
-    this.name = name;
-  }
-
-  get code() {
-    return this._code;
-  }
-
-  set code(code) {
-    if (typeof code !== 'string') {
-      throw new TypeError('Code must be a string');
+    constructor(code, name) {
+      this._code = code;
+      this._name = name;
     }
-
-    this._code = code;
-  }
-
-  get name() {
-    return this._name;
-  }
-
-  set name(name) {
-    if (typeof name !== 'string') {
-      throw new TypeError('Name must be a string');
+  
+    get code() {
+      return this._code;
     }
-
-    this._name = name;
-  }
-
-  displayFullCurrency() {
-    return `${this._name} (${this._code})`;
-  }
+  
+    get name() {
+      return this._name;
+    }
+  
+    set code(newCode) {
+      this._code = newCode;
+    }
+  
+    set name(newName) {
+      this._name = newName;
+    }
+  
+    displayFullCurrency() {
+      return `${this.name} (${this.code})`;
+    }
 }

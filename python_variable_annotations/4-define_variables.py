@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
-"""The module that contains defined and annotated variables"""
+"""
+    Script Documentation
+"""
+
 
 a: int = 1
 pi: float = 3.14

@@ -1,2 +1,6 @@
-// Inserts a document in the collection school in mongo
-db.school.insert({ name: "Holberton school"})
+// Insert document
+db.school.insert(
+	{
+		name: "Holberton school"
+	}
+)

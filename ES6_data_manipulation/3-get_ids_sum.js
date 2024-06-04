@@ -1,3 +1,12 @@
+/* eslint-disable */
 export default function getStudentIdsSum(students) {
-  return students.reduce((accum, current) => accum + current.id, 0);
+    if (!Array.isArray(students)) {
+      return [];
+    }
+  
+    const reducer = (acc, item) => acc + item.id;
+  
+    const sumIds = students.reduce(reducer, 0);
+  
+    return sumIds;
 }

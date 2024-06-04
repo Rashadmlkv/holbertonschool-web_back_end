@@ -1,1 +1,1 @@
-# ES6 data manipulation
+# Documentation for ES6_data_manipulation project

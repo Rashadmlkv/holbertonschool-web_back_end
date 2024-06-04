@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-"""This module contains Server class"""
+"""
+Deletion-resilient hypermedia pagination
+"""
 
 import csv
-import math
 from typing import List, Dict
 
 
@@ -38,20 +39,28 @@ class Server:
         return self.__indexed_dataset
 
     def get_hyper_index(self, index: int = None, page_size: int = 10) -> Dict:
-        """The goal here is that if between two queries, certain rows are
-        removed from the dataset, the user does not miss items from dataset
-        when changing page"""
+        """
+            Method Documentation
+        """
+        dataset_len = len(self.dataset())
+        assert 0 <= index < dataset_len
 
-        assert 0 <= index < len(self.dataset())
-        start = index if index is not None else 0
-        next_index = start + page_size
-        data = self.dataset()[start: next_index]
-        if not self.__indexed_dataset.get(index):
-            next_index += 1
-            data = list(self.indexed_dataset().values())[start: next_index - 1]
+        indexed_dataset = self.indexed_dataset()
+        page_dict = {}
+
+        i = index
+        while (len(page_dict) < page_size and i < dataset_len):
+            if i in indexed_dataset:
+                page_dict[i] = indexed_dataset[i]
+            i += 1
+
+        page = list(page_dict.values())
+        vals = len(page)
+        keys = page_dict.keys()
+
         return {
-            "index": start,
-            "next_index": next_index,
-            "page_size": page_size,
-            "data": data,
-            }
+                'index': index,
+                'next_index': max(keys) + 1,
+                'page_size': vals,
+                'data': page
+        }

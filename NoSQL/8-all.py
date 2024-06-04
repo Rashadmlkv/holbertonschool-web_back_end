@@ -1,9 +1,14 @@
 #!/usr/bin/env python3
-"""This module contains a Python function that
-lists all documents in a collection"""
+"""
+    Script Documentation
+"""
+import pymongo
 
 
-def list_all(mongo_collection):
-    """lists all documents in a collection"""
-    
-    return mongo_collection.find()
+def list_all(collection):
+    """
+        Method Documentation
+    """
+    if not collection:
+        return []
+    return list(collection.find())

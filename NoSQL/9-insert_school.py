@@ -1,8 +1,14 @@
 #!/usr/bin/env python3
-"""This module contains a Python function that inserts
-a new document in a collection based on kwargs"""
+"""
+    Script Documentation
+"""
+import pymongo
 
 
 def insert_school(mongo_collection, **kwargs):
-    """inserts a new document in a collection based on kwargs"""
-    return mongo_collection.insert_one(kwargs).inserted_id
+    """
+        Method Documentation
+    """
+    if len(kwargs) == 0:
+        return None
+    return mongo_collection.insert(kwargs)

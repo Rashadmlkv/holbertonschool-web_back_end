@@ -1,1 +1,1 @@
-# Pagination
+# Documentation for pagination project.

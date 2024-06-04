@@ -1,1 +1,1 @@
-# NoSQL
+# Documentation for NoSQL project.

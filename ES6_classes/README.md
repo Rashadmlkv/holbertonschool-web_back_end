@@ -1,1 +1,1 @@
-# ES6 classes
+# Documentation for ES6 Classes project

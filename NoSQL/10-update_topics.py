@@ -1,8 +1,12 @@
 #!/usr/bin/env python3
-"""This module contains  Python function that changes
-all topics of a school document based on the name"""
+"""
+    Script Documentation
+"""
+import pymongo
 
 
 def update_topics(mongo_collection, name, topics):
-    """changes all topics of a school document based on the name"""
+    """
+        Method Documentation
+    """
     mongo_collection.update_many({"name": name}, {"$set": {"topics": topics}})

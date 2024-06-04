@@ -1,1 +1,1 @@
-# ES6 Promises
+# Readme for ES6-Promises project.

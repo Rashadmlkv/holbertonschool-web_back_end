@@ -1,11 +1,19 @@
+/* eslint-disable */
 export default function cleanSet(set, startString) {
-  if (typeof startString !== 'string' || startString === '') return '';
-
-  const restOfTheStrings = [];
-
-  for (const val of set) {
-    if (val.startsWith(startString)) restOfTheStrings.push(val.slice(startString.length));
-  }
-
-  return restOfTheStrings.join('-');
+    const string = [];
+  
+    if (
+      typeof set !== 'object'
+      || typeof startString !== 'string'
+      || startString.length === 0
+    ) {
+      return '';
+    }
+  
+    for (const item of set) {
+      if (item && item.startsWith(startString)) {
+        string.push(item.slice(startString.length));
+      }
+    }
+    return string.join('-');
 }

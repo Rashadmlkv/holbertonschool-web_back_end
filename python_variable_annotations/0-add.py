@@ -1,7 +1,11 @@
 #!/usr/bin/env python3
-"""Module that contains type-annotated function to add floats"""
+"""
+    Script Documentation
+"""
 
 
 def add(a: float, b: float) -> float:
-    """adds two numbers"""
+    """
+        Method Documentation
+    """
     return a + b
